@@ -75,6 +75,7 @@ package body MicroBit.Ultrasonic is
          if Clock >= Deadline then
             Result_in_CM := 0;
             Echo.Set; --0 cm, NOTE: this cutoff threshold means that value is unusable
+            exit Polling;
          end if;
 
    end loop Polling;
@@ -93,6 +94,7 @@ is
       if Clock >= Deadline then
             Echo.Clear;
             IsTimeOut := True;
+            exit Polling;
       end if;
    end loop Polling;
 
